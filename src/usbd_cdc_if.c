@@ -43,6 +43,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "usbd_cdc_if.h"
+#include "Trace.h"
+#include "lib/commandparser.h"
 /* USER CODE BEGIN INCLUDE */
 /* USER CODE END INCLUDE */
 
@@ -155,6 +157,7 @@ static int8_t CDC_Init_HS(void)
   /* Set Application Buffers */
   USBD_CDC_SetTxBuffer(&hUsbDeviceHS, UserTxBufferHS, 0);
   USBD_CDC_SetRxBuffer(&hUsbDeviceHS, UserRxBufferHS);
+  trace_printf("We initialized the CDC\n");
   return (USBD_OK);
   /* USER CODE END 8 */ 
 }
@@ -168,6 +171,7 @@ static int8_t CDC_Init_HS(void)
 static int8_t CDC_DeInit_HS(void)
 {
   /* USER CODE BEGIN 9 */ 
+  trace_printf("We de-initialized the CDC\n");
   return (USBD_OK);
   /* USER CODE END 9 */ 
 }
@@ -266,6 +270,7 @@ static int8_t CDC_Receive_HS (uint8_t* Buf, uint32_t *Len)
   /* USER CODE BEGIN 11 */ 
   USBD_CDC_SetRxBuffer(&hUsbDeviceHS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceHS);
+  CommandParser_RxData(Buf, *Len);
   return (USBD_OK);
   /* USER CODE END 11 */ 
 }

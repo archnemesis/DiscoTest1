@@ -356,6 +356,11 @@ SECTIONS
         *(.b1rodata.*)
     } >FLASHB1
     
+    .sram_data : ALIGN(4)
+    {
+    	*(.sram_data)
+    } >SRAM
+    
     /*
      * The EXTMEM.
      * The C or assembly source must explicitly place the code or data there

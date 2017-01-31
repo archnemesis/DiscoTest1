@@ -1,0 +1,7 @@
+#include "fonts/DejaVuSans10.c"
+#include "fonts/DejaVuSans12.c"
+#include "fonts/DejaVuSerif16.c"
+#include "fonts/DejaVuSerif32.c"
+#include "fonts/Ubuntu-R12.c"
+#include "fonts/Ubuntu-R16.c"
+#include "fonts/Ubuntu-R22.c"
